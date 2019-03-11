@@ -1,6 +1,7 @@
 # The Complete Pokedex
 
-A elegant and advanced Pokedex, making use of localStorage
+A React Pokedex that looks and feels great.
+Makes use of lazyloading, search and localStorage.
 
 ## Instructions
 
