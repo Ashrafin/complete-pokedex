@@ -1,0 +1,36 @@
+/* container */
+.stat-container {
+	display: flex;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-bottom: 10px;
+	text-align: left !important;
+}
+
+/* name */
+.stat-name {
+	display: inline-block !important;
+	margin-top: 0 !important;
+	margin-bottom: 0 !important;
+	color: #6c7a89 !important;
+	text-align: left !important;
+	font-size: .85rem !important;
+	font-family: 'Titillium Web', sans-serif !important;
+	text-transform: uppercase !important;
+	min-width: 35% !important;
+}
+
+/* bar container */
+.stat-bar-container {
+	display: inline-block !important;
+	margin-top: 4px !important;
+	margin-bottom: 10px !important;
+	border-radius: 50px !important;
+	background: rgba(0,0,0,0.075) !important;
+	min-width: 65% !important;
+}
+
+/* bar */
+.stat-bar-container .bar {
+	border-radius: 50px !important;
+}

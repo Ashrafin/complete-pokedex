@@ -1,0 +1,13 @@
+/* container */
+.types-placeholder-container {
+	display: inline-block !important;
+	width: 50% !important;
+	margin-bottom: 30px !important;
+	padding-left: 10px !important;
+	padding-right: 10px !important;
+}
+
+/* placeholder */
+.types-placeholder {
+	height: 50px !important;
+}

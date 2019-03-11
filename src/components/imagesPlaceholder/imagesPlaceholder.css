@@ -1,0 +1,24 @@
+/* artwork */
+.images-placeholder-artwork {
+	width: 300px !important;
+	height: 300px !important;
+	margin-top: 40px !important;
+	margin-left: auto !important;
+	margin-right: auto !important;
+}
+
+/* sprites container */
+.images-placeholder-sprites-container {
+	width: 100% !important;
+	margin-bottom: 30px !important;
+	margin-left: auto !important;
+	margin-right: auto !important;
+}
+
+/* sprite */
+.images-placeholder-sprite {
+	display: inline-block !important;
+	width: 70px !important;
+	margin-left: 8px !important;
+	margin-right: 8px !important;
+}
