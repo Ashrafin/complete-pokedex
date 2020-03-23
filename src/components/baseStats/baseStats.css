@@ -1,4 +1,3 @@
-/* container */
 .stat-container {
 	display: flex;
 	padding-left: 10px;
@@ -7,7 +6,6 @@
 	text-align: left !important;
 }
 
-/* name */
 .stat-name {
 	display: inline-block !important;
 	margin-top: 0 !important;
@@ -20,7 +18,6 @@
 	min-width: 35% !important;
 }
 
-/* bar container */
 .stat-bar-container {
 	display: inline-block !important;
 	margin-top: 4px !important;
@@ -30,7 +27,6 @@
 	min-width: 65% !important;
 }
 
-/* bar */
 .stat-bar-container .bar {
 	border-radius: 50px !important;
 }

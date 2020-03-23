@@ -1,4 +1,3 @@
-/* header placeholder */
 .header-placeholder-1 {
 	width: 120px !important;
 	margin-bottom: 1em !important;
@@ -6,17 +5,14 @@
 	margin-right: auto !important;
 }
 
-/* line */
 .header-placeholder-1 .line {
 	margin-bottom: 1em !important;
 }
 
-/* line before psuedo class */
 .header-placeholder-1 .line:before {
 	height: 1em !important;
 }
 
-/* subheader placeholder */
 .header-placeholder-2 {
 	width: 60px !important;
 	margin-top: 0 !important;
@@ -24,7 +20,6 @@
 	margin-right: auto !important;
 }
 
-/* line */
 .header-placeholder-2 .line {
 	height: 0 !important;
 }

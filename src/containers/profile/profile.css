@@ -1,40 +1,33 @@
-/* profile container */
 .profile-container {
 	padding-top: 90px !important;
 	padding-bottom: 40px !important;
 	margin: 0 !important;
 }
 
-/* profile breadcrumbs */
 .profile-breadcrumbs {
 	font-family: 'Titillium Web', sans-serif !important;
 	color: #6c7a89 !important;
 }
 
-/* profile breadcrumbs active */
 .profile-breadcrumbs.active {
 	color: #db0a5b !important;
 }
 
-/* profile breadcrumbs divider */
 .breadcrumb-divider {
 	color: #6c7a89 !important;
 }
 
-/* profile header and subheader font size */
 .profile-header,
 .profile-subheader {
 	font-family: 'Titillium Web', sans-serif !important;
 }
 
-/* profile subheader */
 .profile-subheader {
 	margin-top: 5px !important;
 	color: #6c7a89 !important;
 	font-weight: bold !important;
 }
 
-/* profile sprite group */
 .profile-sprite-group {
 	margin-top: 20px !important;
 	margin-bottom: 30px !important;
@@ -42,7 +35,6 @@
 	margin-right: 0 !important;
 }
 
-/* profile artwork */
 .profile-artwork {
 	margin-top: 50px;
 	margin-bottom: 30px;

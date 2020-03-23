@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Grid, Button } from 'semantic-ui-react';
 import axios from 'axios';
 import PokemonPlaceholder from '../../components/pokemonPlaceholder/pokemonPlaceholder';
@@ -6,162 +6,113 @@ import PokemonCard from '../../components/pokemonCard/pokemonCard';
 import checkDigits from '../../utility/checkDigits';
 import './home.css';
 
-// initial pokemon api url
 const pokeApiURL = "https://pokeapi.co/api/v2/pokemon?offset=";
-// how many pokemon to load at a time
 const limit = "&limit=20";
 
-class Home extends React.Component {
-	componentWillMount() {
-		// get the pokedex stored in localStorage
+const Home = props => {
+	const [loadMore, setLoadMore] = useState(false);
+	const [loadingPokemon, setLoadingPokemon] = useState(true);
+	const [simulateLoading, setSimulateLoading] = useState(false);
+	const [pokedex, setPokedex] = useState([]);
+	const [fakeArr, setFakeArr] = useState([]);
+	const [fetchFrom, setFetchFrom] = useState(0);
+
+	useEffect(() => {
 		const cachedPokedex = localStorage.getItem("pokedex", JSON.parse(localStorage.getItem("pokedex")));
-		// get the fetchFrom stored in localStorage
 		const cachedFrom = localStorage.getItem("fetchFrom");
-		// if pokedex and fetchFrom exist in localStorage, pass the data from localStorage to the state
-		// otherwise send an axios request to get the data
+
 		if (cachedPokedex && cachedFrom) {
-			const pokedex = JSON.parse(cachedPokedex);
-			const fetchFrom = JSON.parse(cachedFrom);
-			this.setState({ pokedex, fetchFrom });
+			const pokeData = JSON.parse(cachedPokedex);
+			const fromIndex = JSON.parse(cachedFrom);
+			setPokedex(pokeData);
+			setFetchFrom(fromIndex);
 		} else {
-			// axios request to get the 20 pokemon
-			axios({
-				method: "GET",
-				url: `${ pokeApiURL + this.state.fetchFrom + limit }`
-			})
-			.then(response => {
-				this.setState({
-					pokedex: response.data.results,
-					fetchFrom: this.state.fetchFrom + 20
-				});
-			})
-			.catch(error => {
-				console.log(error);
-			})
+			initialFetchData();
 		}
-	}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 
-	componentDidMount() {
-		// set timeout function to simulate loading the content
+	useEffect(() => {
 		setTimeout(() => {
-			this.setState({ loadingPokemon: false });
-		}, 3000);
-	}
+			setLoadingPokemon(false);
+		}, 1000);
+	}, [fetchFrom]);
 
-	state = {
-		loadMore: false,
-		loadingPokemon: true,
-		simulateLoading: false,
-		pokedex: [],
-		fakeArr: [],
-		fetchFrom: 0
-	}
+	useEffect(() => {
+		setTimeout(() => {
+			localStorage.setItem("pokedex", JSON.stringify(pokedex));
+			localStorage.setItem("fetchFrom", fetchFrom);
+		}, 1500);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [pokedex]);
 
-	// method to get the next 20 pokemon
-	loadNextBatch = () => {
-		// axios request to get the next 20 pokemon
-		axios({
-			method: "GET",
-			url: `${ pokeApiURL + this.state.fetchFrom + limit }`
-		})
-		.then(response => {
-			this.setState({
-				loadMore: true,
-				simulateLoading: true,
-				fakeArr: response.data.results,
-			});
-			// set timeout function to update the pokedex array with the new pokemon's.
-			// set timeout function to simulate loading the content
-			setTimeout(() => {
-				this.setState({
-					loadMore: false,
-					simulateLoading: false,
-					pokedex: [...this.state.pokedex, ...response.data.results],
-					fakeArr: [],
-					fetchFrom: this.state.fetchFrom + 20
-				});
-				// save the current pokedex and current fetchFrom into localStorage
-				localStorage.setItem("pokedex", JSON.stringify(this.state.pokedex));
-				localStorage.setItem("fetchFrom", this.state.fetchFrom);
-			}, 3000);
-		})
-		.catch(error => {
-			console.log(error);
-		})
-	}
+	const loadNextBatch = () => {
+		fetchData();
+	};
 
-	render() {
-		return (
-			<Grid
-				centered
-				columns={ 1 }
-				className="pokedex-container"
-			>
-				<Grid.Row
-					columns={ 1 }
-				>
-					<Grid.Column
-						largeScreen={ 6 }
-						widescreen={ 4 }
-						computer={ 6 }
-						tablet={ 10 }
-						mobile={ 16 }
-					>
+	const initialFetchData = async () => {
+		const response = await axios(`${ pokeApiURL + fetchFrom + limit }`);
+		setPokedex(response.data.results);
+		setFetchFrom(fetchFrom + 20);
+	};
 
-						{ this.state.pokedex
-							? this.state.pokedex.map((pokemon, index) => {
-									return	<React.Fragment
-														key={ index }
-													>
-														{ this.state.loadingPokemon
-															? <PokemonPlaceholder
-																	key={ index }
-																/>
-															: <PokemonCard
-																	name={ pokemon.name }
-																	key={ index }
-																	dexNum={ checkDigits(index + 1) }
-																	history={ this.props.history }
-																	match={ this.props.match }
-																/>
-														}
-													</React.Fragment>
-								})
+	const fetchData = async () => {
+		const response = await axios(`${ pokeApiURL + fetchFrom + limit }`);
+		setLoadMore(true);
+		setSimulateLoading(true);
+		setFakeArr(response.data.results);
+
+		setTimeout(() => {
+			setLoadMore(false);
+			setSimulateLoading(false);
+			setPokedex([...pokedex, ...response.data.results]);
+			setFakeArr([]);
+			setFetchFrom(fetchFrom + 20);
+		}, 1000);
+	};
+
+	return (
+		<Grid centered columns={ 1 } className="pokedex-container">
+			<Grid.Row columns={ 1 }>
+				<Grid.Column largeScreen={ 6 } widescreen={ 4 } computer={ 6 } tablet={ 10 } mobile={ 16 }>
+					{pokedex
+						? pokedex.map((pokemon, index) => {
+							return <React.Fragment key={ index }>
+								{loadingPokemon
+									? <PokemonPlaceholder key={ index } />
+									: <PokemonCard
+											name={ pokemon.name }
+											key={ index }
+											dexNum={ checkDigits(index + 1) }
+											history={ props.location.history }
+											match={ props.location.match }
+										/>
+								}
+							</React.Fragment>
+						})
+						: null
+					}
+
+					{fakeArr.map((item, index) => {
+						return simulateLoading
+							? <PokemonPlaceholder key={ index } />
 							: null
-						}
+					})}
 
-						{ this.state.fakeArr.map((item, index) => {
-							return 	this.state.simulateLoading
-											? <PokemonPlaceholder
-													key={ index }
-												/>
-											: null
-						}) }
-
-						{ this.state.loadingPokemon
-							? null
-							: <Grid.Row
-									columns={ 1 }
-								>
-								<Grid.Column
-									className="load-more-container"
-								>
-									<Button
-										loading={ this.state.loadMore }
-										className="load-more-button"
-										onClick={ this.loadNextBatch }
-									>
+					{loadingPokemon
+						? null
+						: <Grid.Row columns={ 1 }>
+								<Grid.Column className="load-more-container">
+									<Button loading={ loadMore } onClick={ loadNextBatch } disabled={ loadMore } className="load-more-button">
 										load more
-								</Button>
+									</Button>
 								</Grid.Column>
 							</Grid.Row>
-						}
-
-					</Grid.Column>
-				</Grid.Row>
-			</Grid>
-		);
-	}
-}
+					}
+				</Grid.Column>
+			</Grid.Row>
+		</Grid>
+	);
+};
 
 export default Home;

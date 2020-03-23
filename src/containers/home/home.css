@@ -1,11 +1,9 @@
-/* pokedex container */
 .pokedex-container {
 	padding-top: 100px !important;
 	padding-bottom: 40px !important;
 	margin: 0 !important;
 }
 
-/* load more button container */
 .load-more-container {
 	padding-left: 0 !important;
 	padding-right: 0 !important;
@@ -13,7 +11,6 @@
 	text-align: center !important
 }
 
-/* load more button */
 .load-more-button {
 	padding: 20px 1.5rem !important;
 	margin-right: 0 !important;

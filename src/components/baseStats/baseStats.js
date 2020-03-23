@@ -3,17 +3,10 @@ import { Grid, Header, Progress } from 'semantic-ui-react';
 import getBarColor from '../../utility/barColor';
 import './baseStats.css';
 
-export default (props) => (
-	<Grid.Row
-		columns={ 1 }
-	>
-		<Grid.Column
-			className="stat-container"
-		>
-			<Header
-				as="h6"
-				className="stat-name"
-			>
+export default props => (
+	<Grid.Row columns={ 1 }>
+		<Grid.Column className="stat-container">
+			<Header as="h6" className="stat-name">
 				{ props.statName }
 			</Header>
 			<Progress

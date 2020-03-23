@@ -1,4 +1,3 @@
-/* artwork */
 .images-placeholder-artwork {
 	width: 300px !important;
 	height: 300px !important;
@@ -7,7 +6,6 @@
 	margin-right: auto !important;
 }
 
-/* sprites container */
 .images-placeholder-sprites-container {
 	width: 100% !important;
 	margin-bottom: 30px !important;
@@ -15,7 +13,6 @@
 	margin-right: auto !important;
 }
 
-/* sprite */
 .images-placeholder-sprite {
 	display: inline-block !important;
 	width: 70px !important;

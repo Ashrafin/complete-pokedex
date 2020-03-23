@@ -1,17 +1,14 @@
-/* container */
 .stats-placeholder-container {
 	margin-bottom: 5px !important;
 	padding-left: 10px !important;
 	padding-right: 10px !important;
 }
 
-/* name container */
 .stats-placeholder-name-container {
 	display: inline-block !important;
 	width: 35% !important;
 }
 
-/* bar container */
 .stats-placeholder-bar-container {
 	display: inline-block !important;
 	width: 65% !important;

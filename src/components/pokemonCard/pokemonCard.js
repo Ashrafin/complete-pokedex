@@ -4,41 +4,19 @@ import { Grid, Image, Header } from 'semantic-ui-react';
 import capitalizeFirstLetter from '../../utility/capitalizeFirstLetter';
 import './pokemonCard.css';
 
-export default (props) => {
-	// initial pokemon sprite url
+export default props => {
 	const pokeSpriteURL = "https://img.pokemondb.net/sprites/sun-moon/icon/";
-	// pokemon sprite image extention
 	const imageExtention = ".png";
-	// final pokemon sprite url
 	const sprite = `${ pokeSpriteURL + props.name + imageExtention }`;
 
 	return (
-		<Grid.Row
-			columns={ 1 }
-			className="pokemon-card-row"
-		>
-			<Grid.Column
-				as={ Link }
-				to={ `/${ capitalizeFirstLetter(props.name) }` }
-				className="pokemon-card-container"
-			>
-				<Header
-					as="h5"
-					className="pokemon-name"
-				>
-					<Image
-						inline
-						size="big"
-						src={ sprite }
-						className="pokemon-image"
-					/>
+		<Grid.Row columns={ 1 } className="pokemon-card-row">
+			<Grid.Column as={ Link } to={ `/${ capitalizeFirstLetter(props.name) }` } className="pokemon-card-container">
+				<Header as="h5" className="pokemon-name">
+					<Image inline size="big" src={ sprite } className="pokemon-image" />
 					{ props.name }
 				</Header>
-				<Header
-					as="h5"
-					floated="right"
-					className="pokemon-number"
-				>
+				<Header as="h5" floated="right" className="pokemon-number">
 					# { props.dexNum }
 				</Header>
 			</Grid.Column>

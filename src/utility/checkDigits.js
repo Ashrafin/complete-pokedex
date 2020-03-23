@@ -1,5 +1,4 @@
-// return the appropriate number of 0's based on the number
-export default (number) => {
+export default number => {
 	if (number < 10) {
 		let finalNum = "00" + number.toString();
 		return finalNum;

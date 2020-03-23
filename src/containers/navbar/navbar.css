@@ -1,9 +1,7 @@
-/* navbar container */
 .navbar-container {
 	border-radius: 0 !important;
 }
 
-/* navbar item */
 .navbar-item {
 	padding: 20px !important;
 	border-radius: 0 !important;
@@ -13,42 +11,35 @@
 	font-family: 'Titillium Web', sans-serif;
 }
 
-/* navbar logo image */
 .navbar-image {
 	height: 20px !important;
 	width: auto !important;
 	margin-right: 10px !important;
 }
 
-/* navbar search input */
 .navbar-search .prompt {
 	width: 250px;
 	font-family: 'Titillium Web', sans-serif;
 }
 
-/* navbar search results */
 .navbar-search .results {
 	overflow-y: scroll;
 	max-height: 400px;
 }
 
-/* navbar search result */
 .navbar-search .results .result {
 	transition: all .1s linear;
 	padding: 0 !important;
 }
 
-/* navbar search result hover background color */
 .navbar-search .results .result:hover {
 	background-color: #00b5cc !important;
 }
 
-/* navbar search result hover label color */
 .navbar-search .results .result:hover .label {
 	color: #fff;
 }
 
-/* navbar search scrollable results */
 .navbar-search .results::-webkit-scrollbar {
 	display: none !important;
 }

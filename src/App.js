@@ -1,16 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Navbar from './containers/navbar/navbar';
 import Routes from './routes';
 
-class App extends Component {
-  render() {
-    return (
-      <React.Fragment>
-        <Navbar />
-        <Routes />
-      </React.Fragment>
-    );
-  }
-}
+
+const App = () => {
+  return (
+    <>
+      <Navbar />
+      <Routes />
+    </>
+  );
+};
 
 export default App;

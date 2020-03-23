@@ -1,9 +1,7 @@
-/* row */
 .pokemon-placeholder-row {
 	margin-bottom: 30px !important;
 }
 
-/* container */
 .pokemon-placeholder-container {
 	display: block;
 	position: relative;
@@ -17,7 +15,6 @@
 	cursor: pointer;
 }
 
-/* container hover */
 .pokemon-placeholder-container:hover {
 	-webkit-box-shadow: 0px 8px 15px -5px rgba(0, 0, 0, 0.35);
 	-moz-box-shadow: 0px 8px 15px -5px rgba(0, 0, 0, 0.35);
@@ -25,7 +22,6 @@
 	transform: translateY(-5px) scale(1.01);
 }
 
-/* image container */
 .pokemon-placeholder-image-container {
 	display: inline-block;
 	width: 38px;
@@ -34,7 +30,6 @@
 	margin-right: 34px;
 }
 
-/* name container */
 .pokemon-placeholder-name-container {
 	display: inline-block;
 	width: 100px;
@@ -43,7 +38,6 @@
 	margin-top: 0 !important;
 }
 
-/* number container */
 .pokemon-placeholder-number-container {
 	display: inline-block;
 	width: 50px;

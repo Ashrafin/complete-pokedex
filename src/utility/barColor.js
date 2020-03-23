@@ -1,4 +1,3 @@
-// return bar color based on the name
 export default (name) => {
 	switch (name) {
 		case "speed":

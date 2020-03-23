@@ -1,4 +1,3 @@
-// return a class name based on the type
 export default (type) => {
 	switch (type) {
 		case "grass":
