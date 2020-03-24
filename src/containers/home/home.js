@@ -21,11 +21,10 @@ const Home = props => {
 		const cachedPokedex = localStorage.getItem("pokedex", JSON.parse(localStorage.getItem("pokedex")));
 		const cachedFrom = localStorage.getItem("fetchFrom");
 
-		if (cachedPokedex && cachedFrom) {
+		if (cachedPokedex !== null && cachedFrom !== null) {
 			const pokeData = JSON.parse(cachedPokedex);
-			const fromIndex = JSON.parse(cachedFrom);
 			setPokedex(pokeData);
-			setFetchFrom(fromIndex);
+			setFetchFrom(+cachedFrom);
 		} else {
 			initialFetchData();
 		}
@@ -42,9 +41,9 @@ const Home = props => {
 		setTimeout(() => {
 			localStorage.setItem("pokedex", JSON.stringify(pokedex));
 			localStorage.setItem("fetchFrom", fetchFrom);
-		}, 1500);
+		}, 1000);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [pokedex]);
+	}, [pokedex, fetchFrom]);
 
 	const loadNextBatch = () => {
 		fetchData();
@@ -62,12 +61,14 @@ const Home = props => {
 		setSimulateLoading(true);
 		setFakeArr(response.data.results);
 
+		const newFetchFrom = fetchFrom + 20;
+
 		setTimeout(() => {
 			setLoadMore(false);
 			setSimulateLoading(false);
 			setPokedex([...pokedex, ...response.data.results]);
+			setFetchFrom(newFetchFrom);
 			setFakeArr([]);
-			setFetchFrom(fetchFrom + 20);
 		}, 1000);
 	};
 
