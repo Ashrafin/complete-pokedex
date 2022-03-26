@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.19.2",
-    "minimist": "^1.2.5",
+    "minimist": "^1.2.6",
     "react": "*",
     "react-dom": "*",
     "react-router": "^5.1.2",
